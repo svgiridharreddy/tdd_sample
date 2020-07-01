@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title TddSample
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"}
+  %body
+    = render "shared/navbar"
+    = yield
+    :javascript
+      jQuery(function($) {
+        $(".tweet-btn")
+          .bind("ajax:loading", console.log('loading'))
+          .bind("ajax:complete", console.log('complete'))
+          .bind("ajax:success", function(event, data, status, xhr) {
+            #{render "shared/tweets_table"}
+          })
+          .bind("ajax:failure", function(xhr, status, error) {
+            console.log(error);
+          });
+      });

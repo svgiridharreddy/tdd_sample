@@ -1,0 +1,14 @@
+%p#notice= notice
+%h1 Salaries
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    - @salaries.each do |salary|
+      %tr
+        %td= link_to 'Show', salary
+        %td= link_to 'Edit', edit_salary_path(salary)
+        %td= link_to 'Destroy', salary, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Salary', new_salary_path

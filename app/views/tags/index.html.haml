@@ -1,0 +1,4 @@
+%ul.list-group
+  - @tags.each do |tag|
+    %li.list-group-item
+      = link_to "#{tag.name}",tag_path(tag)

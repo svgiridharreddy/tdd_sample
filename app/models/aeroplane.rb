@@ -1,0 +1,2 @@
+class Aeroplane < Vehicle
+end

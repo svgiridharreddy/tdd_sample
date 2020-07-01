@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  brand: MyString
+  no_of_wheels: 1
+
+two:
+  type: 
+  name: MyString
+  brand: MyString
+  no_of_wheels: 1

@@ -1,0 +1,24 @@
+%h1 We're going to be *BEST* friends
+%p Thanks for your interest in signing up! Can you tell us a bit about yourself?
+- if @userdup.errors.any?
+  %h2 Oops, something went wrong!
+  %ul
+    - @userdup.errors.full_messages.each do |error|
+      %li= error
+= form_for @userdup,url: userdups_verify_path,method: :post do |f|
+  .form-group
+    = f.label :name, "Tell us your name:"
+    = f.text_field :name, class: "form-control", placeholder: "Zingelbert Bembledack"
+  .form-group
+    = f.label :email, "Enter Your E-mail Address:"
+    = f.email_field :email, class: "form-control", placeholder: "me@mydomain.com"
+  .form-group
+    = f.label :password, "Enter a password:"
+    = f.password_field :password, class: "form-control"
+  .form-group
+    = f.label :country_code
+    = f.text_field :country_code, class: "form-control", id: "authy-countries"
+  .form-group
+    = f.label :phone_number
+    = f.text_field :phone_number, class: "form-control", id: "authy-cellphone"
+  %button{:type => "submit"} Submit

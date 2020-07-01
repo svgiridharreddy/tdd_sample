@@ -1,0 +1,7 @@
+%h2= @user.user_name
+%ul.list-group
+  - @user.tweets.each do |tweet|
+    %li.list-group-item
+      = tweet.body
+      %small= tweet.created_at
+      = link_to 'Delete', tweet_path(tweet), method: :delete if current_user == tweet.user
